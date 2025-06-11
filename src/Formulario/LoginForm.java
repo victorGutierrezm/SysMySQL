@@ -8,7 +8,7 @@ import java.awt.event.ActionListener;
 import java.sql.*;
 
 public class LoginForm {
-    public JPanel panel; // debe coincidir con el nombre del JPanel en el .form
+    public JPanel panel; // debe coincidir con el nombre del JPanel en el form
     private JTextField correoTextField;
     private JPasswordField passwordField;
     private JButton loginButton;
