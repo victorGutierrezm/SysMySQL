@@ -49,7 +49,7 @@ public class LoginForm {
             }
         });
     }
-
+//prueba
     public static void main(String[] args) {
         JFrame frame = new JFrame("Login");
         frame.setContentPane(new LoginForm().panel);
