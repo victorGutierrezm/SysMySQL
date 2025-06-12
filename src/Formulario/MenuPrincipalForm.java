@@ -19,7 +19,7 @@ public class MenuPrincipalForm {
         RolDAO dao = new RolDAO();
         List<Rol> lista = dao.obtenerRoles();
 
-        String[] columnas = {"ID Rol", "Nombre", "Estados"};
+        String[] columnas = {"ID Rol", "Nombre", "Estado"};
         DefaultTableModel modelo = new DefaultTableModel(columnas, 0);
 
         for (Rol rol : lista) {

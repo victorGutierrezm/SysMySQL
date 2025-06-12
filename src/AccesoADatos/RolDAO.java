@@ -19,7 +19,7 @@ public class RolDAO {
             while (rs.next()) {
                 int id = rs.getInt("IdRol");
                 String nombre = rs.getString("Nombre");
-                int estado = rs.getInt("Estados");
+                int estado = rs.getInt("Estado");
 
                 lista.add(new Rol(id, nombre, estado));
             }

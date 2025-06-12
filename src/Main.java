@@ -11,7 +11,7 @@ public class Main {
         for (Rol rol : roles) {
             System.out.println("ID:" + rol.getIdRol() +
                     ",Nombre:" + rol.getNombre() +
-                    ",Estados:" + rol.getEstado());
+                    ",Estado:" + rol.getEstado());
 
         }
 
