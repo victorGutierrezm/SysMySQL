@@ -10,22 +10,22 @@ public class RolDAO {
     public List<Rol> obtenerRoles() {
         List<Rol> lista = new ArrayList<>();
 
-        String sql = "SELECT idrol, nombre, estado FROM rol";
+        String sql = "SELECT IdRol, Nombre, Estado FROM Rol";
 
-        try (Connection conn = Conexion.getConnection();
+        try (Connection conn = Conexion.getConexion();
              Statement stmt = conn.createStatement();
              ResultSet rs = stmt.executeQuery(sql)) {
 
             while (rs.next()) {
-                int id = rs.getInt("idrol");
-                String nombre = rs.getString("nombre");
-                int estado = rs.getInt("estado");
+                int id = rs.getInt("IdRol");
+                String nombre = rs.getString("Nombre");
+                int estado = rs.getInt("Estado");
 
                 lista.add(new Rol(id, nombre, estado));
             }
 
         } catch (SQLException e) {
-            e.printStackTrace();
+            System.out.println("❌ Error al obtener roles: " + e.getMessage());
         }
 
         return lista;

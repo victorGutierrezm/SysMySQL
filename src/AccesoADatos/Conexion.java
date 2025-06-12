@@ -1,16 +1,21 @@
 package AccesoADatos;
+
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
 public class Conexion {
-    // Cambia "nombre_de_tu_base" por el nombre real de tu base de datos
-    private static final String URL = "jdbc:mysql://localhost:3306/BDLogin?useSSL=false&serverTimezone=UTC";
-    private static final String USER = "root"; // o el usuario que uses
-    private static final String PASS = "Admin17032005##"; // pon tu contraseña de MySQL
+    private static final String URL = "jdbc:sqlserver://BD_System.mssql.somee.com:1433;databaseName=BD_System;encrypt=true;trustServerCertificate=true";
+    private static final String USER = "dev_sistema_SQLLogin_1";
+    private static final String PASSWORD = "ytps89h3ac";
 
-
-    public static Connection getConnection() throws SQLException {
-        return DriverManager.getConnection(URL, USER, PASS);
+    public static Connection getConexion() {
+        try {
+            // Incluye usuario y contraseña directamente en la URL
+            return DriverManager.getConnection(URL + ";user=" + USER + ";password=" + PASSWORD);
+        } catch (SQLException e) {
+            System.out.println("❌ Error de conexión: " + e.getMessage());
+            return null;
+        }
     }
 }
