@@ -30,7 +30,7 @@ public class LoginForm {
 
                     ResultSet rs = stmt.executeQuery();
                     if (rs.next()) {
-                        JOptionPane.showMessageDialog(null, "¡Bienvenido " + rs.getString("Nombre") + "!");
+                        JOptionPane.showMessageDialog(null, "¡Bienvenido/a " + rs.getString("Nombre") + "!");
 
                         // Abrir ventana principal
                         SwingUtilities.invokeLater(() -> {

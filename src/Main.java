@@ -1,7 +1,6 @@
 import AccesoADatos.RolDAO;
 import Entidades.Rol;
-import java.util.List;
-//TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
+import java.util.List;//TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
 // click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
 public class Main {
     public static void main(String[] args) {
@@ -12,7 +11,7 @@ public class Main {
         for (Rol rol : roles) {
             System.out.println("ID:" + rol.getIdRol() +
                     ",Nombre:" + rol.getNombre() +
-                    ",Estado:" + rol.getEstado());
+                    ",Estados:" + rol.getEstado());
 
         }
 

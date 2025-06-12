@@ -15,7 +15,7 @@ public class RolTablaForm extends JFrame {
     private DefaultTableModel modelo;
 
     public RolTablaForm() {
-        setTitle("Vista de Roles");
+        setTitle("Vista de Roless");
         setSize(600, 300);
         setLocationRelativeTo(null);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

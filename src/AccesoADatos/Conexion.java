@@ -14,7 +14,7 @@ public class Conexion {
             // Incluye usuario y contraseña directamente en la URL
             return DriverManager.getConnection(URL + ";user=" + USER + ";password=" + PASSWORD);
         } catch (SQLException e) {
-            System.out.println("❌ Error de conexión: " + e.getMessage());
+            System.out.println("❌ Error de conexión}: " + e.getMessage());
             return null;
         }
     }
