@@ -1,16 +1,25 @@
 package Formulario;
+
 import AccesoADatos.Conexion;
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.*;
+import Formulario.LogicaDeNegocio.Estilos;
+import Formulario.MenuPrincipalForm;
 
 public class LoginForm {
     public JPanel panel;
     private JTextField correoTextField;
     private JPasswordField passwordField;
     private JButton loginButton;
+
     public LoginForm() {
+        // APLICAR ESTILO A COMPONENTES
+        Estilos.estilizarCampoTexto(correoTextField);
+        Estilos.estilizarCampoTexto(passwordField);
+        Estilos.estilizarBoton(loginButton);
+
         loginButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -32,11 +41,10 @@ public class LoginForm {
                     if (rs.next()) {
                         JOptionPane.showMessageDialog(null, "¡Bienvenido/a " + rs.getString("Nombre") + "!");
 
-                        // Abrir ventana principal
                         SwingUtilities.invokeLater(() -> {
                             JFrame loginFrame = (JFrame) SwingUtilities.getWindowAncestor(panel);
                             loginFrame.dispose();
-                            MenuPrincipalForm.mostrar(); // asegúrate que esta clase existe
+                            MenuPrincipalForm.mostrar(); // asegúrate que existe
                         });
 
                     } else {
@@ -49,16 +57,16 @@ public class LoginForm {
             }
         });
     }
-//prueba
+
     public static void main(String[] args) {
         JFrame frame = new JFrame("Login");
-        frame.setContentPane(new LoginForm().panel);
+        LoginForm loginForm = new LoginForm();
+        frame.setContentPane(loginForm.panel);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setSize(400, 250);
-        frame.setLocationRelativeTo(null);
+
+        // ESTILO VISUAL A LA VENTANA
+        Estilos.aplicarEstiloFormulario(frame);
+
         frame.setVisible(true);
     }
-
-
-
 }

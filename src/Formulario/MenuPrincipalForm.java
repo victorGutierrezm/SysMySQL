@@ -1,45 +1,53 @@
 package Formulario;
 
-import AccesoADatos.RolDAO;
-import Entidades.Rol;
-
 import javax.swing.*;
-import javax.swing.table.DefaultTableModel;
-import java.util.List;
+import java.awt.*;
 
-public class MenuPrincipalForm {
-    public JPanel panel;
-    private JTable tablaRoles;
+public class MenuPrincipalForm extends JFrame {
 
     public MenuPrincipalForm() {
-        cargarTablaRoles();
+        setTitle("Menú Principal");
+        setSize(600, 400);
+        setLocationRelativeTo(null);
+        setDefaultCloseOperation(EXIT_ON_CLOSE);
+
+        // Panel principal
+        JPanel panel = new JPanel();
+        panel.setLayout(new GridLayout(3, 1, 20, 20));
+
+        JLabel titulo = new JLabel("Bienvenido al Menú Principal", SwingConstants.CENTER);
+        titulo.setFont(new Font("Segoe UI", Font.BOLD, 20));
+
+        JButton btnEquipos = new JButton("Gestión de Equipos");
+        JButton btnHistorial = new JButton("Historial de Mantenimiento");
+
+        // Estilo
+        btnEquipos.setFont(new Font("Segoe UI", Font.PLAIN, 16));
+        btnHistorial.setFont(new Font("Segoe UI", Font.PLAIN, 16));
+
+        // Acciones
+        btnEquipos.addActionListener(e -> {
+            EquipoForm ventanaEquipos = new EquipoForm();
+            ventanaEquipos.setVisible(true);
+        });
+
+        btnHistorial.addActionListener(e -> {
+            HistorialMantenimientoForm ventanaHistorial = new HistorialMantenimientoForm();
+            ventanaHistorial.setVisible(true);
+        });
+
+        panel.add(titulo);
+        panel.add(btnEquipos);
+        panel.add(btnHistorial);
+
+        add(panel);
     }
 
-    private void cargarTablaRoles() {
-        RolDAO dao = new RolDAO();
-        List<Rol> lista = dao.obtenerRoles();
-
-        String[] columnas = {"ID Rol", "Nombre", "Estado"};
-        DefaultTableModel modelo = new DefaultTableModel(columnas, 0);
-
-        for (Rol rol : lista) {
-            String estadoTexto = (rol.getEstado() == 1) ? "Activo" : "Inactivo";
-            modelo.addRow(new Object[]{
-                    rol.getIdRol(),
-                    rol.getNombre(),
-                    estadoTexto
-            });
-        }
-
-        tablaRoles.setModel(modelo);
-    }
-
+    // Método para abrir el menú desde LoginForm
     public static void mostrar() {
-        JFrame frame = new JFrame("Menú Principal");
-        frame.setContentPane(new MenuPrincipalForm().panel);
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setSize(600, 400);
-        frame.setLocationRelativeTo(null);
-        frame.setVisible(true);
+        SwingUtilities.invokeLater(() -> {
+            MenuPrincipalForm menu = new MenuPrincipalForm();
+            menu.setVisible(true);
+        });
     }
 }
